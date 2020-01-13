@@ -16,7 +16,7 @@ class App {
   }
 
   routes() {
-    this.express.use(routes);
+    this.express.use('/.netlify/functions/index', routes);
   }
 
 }
