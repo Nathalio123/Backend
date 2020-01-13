@@ -12,6 +12,9 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "mongodb-client-encryption": "^1.0.1",
+    "mongoose": "^5.8.7",
+    "mongoose-serverless": "^0.0.1",
     "netlify-lambda": "^1.6.3",
     "serverless-http": "^2.3.0"
   },

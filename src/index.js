@@ -6,4 +6,3 @@ dotenv.config();
 
 module.exports.handler = serverless(app);
 
-
