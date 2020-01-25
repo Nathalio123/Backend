@@ -3080,14 +3080,7 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose-serverless@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/mongoose-serverless/-/mongoose-serverless-0.0.1.tgz#0b1c71fd1b7000ed9ca6fd52ef14e40b0b84c080"
-  integrity sha512-8uM/21+oUkEFb2D9GjaFAg5kYqBpgpQjoCrA0psJ5dl38e8t1sMBWPdq4BLsAdQ7ujSbdJjF3M9vfHyfySL9Tg==
-  dependencies:
-    mongoose "^5.3.4"
-
-mongoose@^5.3.4, mongoose@^5.8.7:
+mongoose@^5.8.7:
   version "5.8.7"
   resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.8.7.tgz#d175f8ac4c8ed7bf57b71aa4980aaa3525b923b2"
   integrity sha512-PCCuTrdxpUmO86L1geXWE+9AvJRFuneIrMUT2hB/LXZ+5HIGOIfE6OSMU7cd8wFU7JRINP9V73zZ9YsmAbt+Iw==
