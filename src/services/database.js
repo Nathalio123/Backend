@@ -1,16 +1,24 @@
-// const mongoose = require("mongoose");
-// const dotenv = require("dotenv");
+const mongoose = require('mongoose');
 
-// dotenv.config();
+// Constants
+let isConnected = false;
+mongoose.Promise = global.Promise;
 
-// const db = mongoose.connect( process.env.DATABASE_URL, 
-// {
-//   useNewUrlParser: true,
-//   useFindAndModify: false,
-//   useUnifiedTopology: true
-// }  
-// ,() => {
-//   console.log('Database was connected');
-// });
+// Main
+const connectToDatabase = (urlConnection) => {
+  if (!urlConnection) throw new Error('Not urlConnection provided or the urlConnection is invalid');
 
-// module.exports = db;
+  if (isConnected) {
+    return Promise.resolve();
+  }
+  // TODO: Remove the next line
+  return mongoose.connect(urlConnection, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }).then((db) => { isConnected = db.connections[0].readyState; });
+};
+
+// Main
+module.exports = {
+  connectToDatabase,
+};

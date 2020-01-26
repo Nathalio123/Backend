@@ -1,18 +1,18 @@
 const Category = require("../models/Category");
-const myMongo = require('mongoose-serverless');
+const MongoConnection = require('../services/database');
 
 module.exports = {
   async index( req, res ) {
 
     try {
-      await myMongo.connectToDatabase(process.env.DATABASE_URL);
+      await MongoConnection.connectToDatabase(process.env.DATABASE_URL);
       const categories = await Category.find();
-        
-      return res.send(categories);    
+
+      return res.send(categories);
     } catch (err) {
-      return res.status(500).json({ 
+      return res.status(500).json({
         error: "Não foi possível recuperar as categoria",
-        detail: err 
+        detail: err
       })
     }
 
@@ -21,7 +21,7 @@ module.exports = {
   async store( req, res ) {
     const { name, description } = req.body;
 
-    await myMongo.connectToDatabase(process.env.DATABASE_URL);
+    await MongoConnection.connectToDatabase(process.env.DATABASE_URL);
 
     try {
       const category = await Category.create({
@@ -31,9 +31,9 @@ module.exports = {
 
       return res.status(200).json(category);
     } catch (err) {
-      return res.status(500).json({ 
+      return res.status(500).json({
         error: "Não foi possível cadastrar uma categoria",
-        detail: err 
+        detail: err
       })
     }
 
