@@ -32,10 +32,14 @@ module.exports = {
   },
 
   async show (req, res) {
-    const { id } = req.params;
+    const { email, password } = req.query;
 
     try {
-      const user = await User.findById(id);
+      const user = await User.findOne({ email });
+
+      if(!user || password !== user.password){
+        return res.json({ error: 'Email ou senha inválida!' });
+      }
 
       return res.status(200).json(user);
     } catch(err) {

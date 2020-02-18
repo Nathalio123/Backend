@@ -15,7 +15,7 @@ routes.post('/posts', PostController.store);
 
 // Users
 routes.get('/users', UserController.index);
-routes.get('/user/auth', UserController.show);
+routes.get('/user/login', UserController.show);
 route.post('/user', UserController.store);
 
 module.exports = routes;
