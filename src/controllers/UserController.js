@@ -2,13 +2,14 @@ const User = require('../models/User');
 
 module.exports = {
   async store (req, res) {
-    const { name, email, password } = req.query;
+    const { username, email, password, role } = req.body;
 
     try {
       const user = await User.create({
-        name,
+        username,
         email,
         password,
+        role
       });
 
       return res.status(200).json(user);
