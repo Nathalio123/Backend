@@ -38,5 +38,39 @@ module.exports = {
       })
     }
 
-  }
+  },
+
+  async showByCategory( req, res ) {
+    const { id_category } = req.params;
+
+    try {
+      await MongoConnection.connectToDatabase(process.env.DATABASE_URL);
+      const posts = await Post.find({ category: { _id: id_category }});
+
+      return res.send(posts);
+    } catch (err) {
+      return res.status(500).json({
+        error: "Não foi possível recuperar os posts",
+        detail: err
+      })
+    }
+
+  },
+
+  async show( req, res ) {
+    const { id } = req.params;
+
+    try {
+      await MongoConnection.connectToDatabase(process.env.DATABASE_URL);
+      const posts = await Post.findById(id);
+
+      return res.send(posts);
+    } catch (err) {
+      return res.status(500).json({
+        error: "Não foi possível recuperar o post",
+        detail: err
+      })
+    }
+
+  },
 }
