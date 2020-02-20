@@ -37,5 +37,24 @@ module.exports = {
       })
     }
 
-  }
+  },
+
+  async show( req, res ) {
+    console.log('passou');
+    const { id } = req.params;
+
+    await MongoConnection.connectToDatabase(process.env.DATABASE_URL);
+
+    try {
+      const category = await Category.findById(id);
+
+      return res.status(200).json(category);
+    } catch (err) {
+      return res.status(500).json({
+        error: "Não foi possível encontrar a categoria",
+        detail: err
+      })
+    }
+
+  },
 }
