@@ -45,7 +45,7 @@ module.exports = {
 
     try {
       await MongoConnection.connectToDatabase(process.env.DATABASE_URL);
-      const posts = await Post.find({ category: { _id: id_category }});
+      const posts = await Post.find({ category: { _id: id_category }}).populate('category');
 
       return res.send(posts);
     } catch (err) {
@@ -62,7 +62,7 @@ module.exports = {
 
     try {
       await MongoConnection.connectToDatabase(process.env.DATABASE_URL);
-      const posts = await Post.findById(id);
+      const posts = await Post.findById(id).populate('category');
 
       return res.send(posts);
     } catch (err) {

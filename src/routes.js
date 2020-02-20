@@ -7,10 +7,13 @@ routes.get('/', () => res.json({ hello: 'world' }));
 
 // Categories
 routes.get('/categories', CategoryController.index);
+routes.get('/categories/:id', CategoryController.show);
 routes.post('/categories', CategoryController.store);
 
 // Posts
 routes.get('/posts', PostController.index);
+routes.get('/posts/:id', PostController.show);
+routes.get('/posts/category/:id_category', PostController.showByCategory);
 routes.post('/posts', PostController.store);
 
 // Users
