@@ -1,10 +1,12 @@
 const User = require('../models/User');
+const MongoConnection = require('../services/database');
 
 module.exports = {
   async store (req, res) {
     const { username, email, password, role } = req.body;
 
     try {
+      await MongoConnection.connectToDatabase(process.env.DATABASE_URL);
       const user = await User.create({
         username,
         email,
@@ -22,6 +24,7 @@ module.exports = {
 
   async index (req, res) {
     try {
+      await MongoConnection.connectToDatabase(process.env.DATABASE_URL);
       const users = await User.find();
 
       return res.status(200).json(users);
@@ -36,6 +39,7 @@ module.exports = {
     const { email, password } = req.query;
 
     try {
+      await MongoConnection.connectToDatabase(process.env.DATABASE_URL);
       const user = await User.findOne({ email });
 
       if(!user || password !== user.password){
