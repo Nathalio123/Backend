@@ -1,6 +1,7 @@
 const express = require("express");
 
 const routes = require('./routes');
+const cors = require('cors');
 const database = require('./services/database');
 
 class App {
@@ -13,6 +14,7 @@ class App {
   }
 
   middlewares() {
+    this.use(cors());
     this.express.use(express.json());
   }
 
