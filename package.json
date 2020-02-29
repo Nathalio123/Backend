@@ -6,7 +6,8 @@
   "author": "Joberth Rogers <joberth.rogers18@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "./node_modules/.bin/netlify-lambda serve src",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
     "build": "./node_modules/.bin/netlify-lambda build src"
   },
   "dependencies": {

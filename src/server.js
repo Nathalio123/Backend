@@ -2,11 +2,13 @@ const express = require("express");
 
 const routes = require('./routes');
 const cors = require('cors');
-const database = require('./services/database');
+const dotenv = require('dotenv');
 
 class App {
 
   constructor() {
+    dotenv.config();
+    require('./services/database');
     this.express = express();
 
     this.middlewares();
@@ -19,7 +21,7 @@ class App {
   }
 
   routes() {
-    this.express.use('/.netlify/functions/index', routes);
+    this.express.use(routes);
   }
 
 }
