@@ -3,7 +3,7 @@ const PostController = require("./controllers/PostController");
 const UserController = require("./controllers/UserController");
 const routes = require('express').Router();
 
-routes.get('/', () => res.json({ hello: 'world' }));
+routes.get('/', (req, res) => res.json({ hello: 'world' }));
 
 // Categories
 routes.get('/categories', CategoryController.index);
