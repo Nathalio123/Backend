@@ -1,11 +1,9 @@
 const Post = require("../models/Post");
-const MongoConnection = require('../services/database');
 
 module.exports = {
   async index( req, res ) {
 
     try {
-      await MongoConnection.connectToDatabase(process.env.DATABASE_URL);
       const posts = await Post.find();
 
       return res.send(posts);
@@ -20,8 +18,6 @@ module.exports = {
 
   async store( req, res ) {
     const { name, content, category } = req.body;
-
-    await MongoConnection.connectToDatabase(process.env.DATABASE_URL);
 
     try {
       const post = await Post.create({
@@ -44,7 +40,6 @@ module.exports = {
     const { id_category } = req.params;
 
     try {
-      await MongoConnection.connectToDatabase(process.env.DATABASE_URL);
       const posts = await Post.find({ category: { _id: id_category }}).populate('category');
 
       return res.send(posts);
@@ -61,7 +56,6 @@ module.exports = {
     const { id } = req.params;
 
     try {
-      await MongoConnection.connectToDatabase(process.env.DATABASE_URL);
       const posts = await Post.findById(id).populate('category');
 
       return res.send(posts);
