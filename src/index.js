@@ -1,8 +1,7 @@
 const app = require('./server');
-const dotenv = require('dotenv');
-const serverless = require("serverless-http");
+const PORT = process.env.PORT || 3333;
 
-dotenv.config();
-
-module.exports.handler = serverless(app);
+app.listen(PORT, () => {
+  console.log(`Server running in port: ${PORT}`);
+})
 
