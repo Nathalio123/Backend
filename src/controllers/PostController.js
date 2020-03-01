@@ -6,7 +6,6 @@ module.exports = {
     try {
       const posts = await Post.find();
 
-      console.log('teste')
       return res.send(posts);
     } catch (err) {
       return res.status(500).json({
