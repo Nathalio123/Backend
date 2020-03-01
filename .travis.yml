@@ -11,4 +11,4 @@ deploy:
   slot: fitologiabackend
   verbose: true
   on:
-    branch: develop-azure
+    branch: master
